@@ -15,7 +15,6 @@ def manage_items(request, *args, **kwargs):
         count = 0
         for key in redis_instance.keys("*"):
             if not key.startswith('_kombu.binding'):
-                print(key)
                 items[key] = json.loads(redis_instance.get(key))
                 count += 1
             else:
